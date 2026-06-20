@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solar Energy Website Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SolarPlus - Solar Panel Installation</title>
 
   <style>
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family: Arial, sans-serif;
+      font-family:Arial, sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
     }
 
     body{
@@ -27,18 +31,30 @@
       align-items:center;
       position:sticky;
       top:0;
-      z-index:100;
+      z-index:1000;
     }
 
     header h2{
       color:#ffd43b;
     }
 
+    nav{
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+
     nav a{
       color:white;
       text-decoration:none;
-      margin-left:22px;
       font-size:15px;
+    }
+
+    .hamburger{
+      display:none;
+      font-size:30px;
+      color:#ffd43b;
+      cursor:pointer;
     }
 
     .hero{
@@ -82,7 +98,7 @@
       border-radius:30px;
       font-weight:bold;
       text-decoration:none;
-      margin-right:10px;
+      margin:6px;
     }
 
     .btn-dark{
@@ -182,6 +198,7 @@
       height:220px;
       object-fit:cover;
       border-radius:15px;
+      margin-bottom:15px;
     }
 
     .cta{
@@ -202,6 +219,7 @@
       color:white;
       padding:35px 8%;
       text-align:center;
+      line-height:1.8;
     }
 
     .whatsapp{
@@ -215,33 +233,94 @@
       text-decoration:none;
       font-weight:bold;
       box-shadow:0 6px 18px rgba(0,0,0,.3);
+      z-index:999;
     }
 
     @media(max-width:768px){
+      header{
+        padding:16px 5%;
+      }
+
+      .hamburger{
+        display:block;
+      }
+
       nav{
+        position:absolute;
+        top:68px;
+        left:0;
+        width:100%;
+        background:#062b4f;
         display:none;
+        flex-direction:column;
+        gap:18px;
+        padding:22px 0;
+        box-shadow:0 10px 20px rgba(0,0,0,.25);
+      }
+
+      nav.active{
+        display:flex;
+      }
+
+      nav a{
+        font-size:16px;
+      }
+
+      .hero{
+        min-height:85vh;
+        padding:80px 5%;
+        text-align:center;
+        justify-content:center;
       }
 
       .hero h1{
         font-size:36px;
       }
 
+      .hero p{
+        font-size:16px;
+      }
+
       section{
-        padding:50px 5%;
+        padding:55px 5%;
+      }
+
+      .title{
+        font-size:28px;
+      }
+
+      .calculator{
+        padding:25px;
+      }
+
+      .cta h2{
+        font-size:28px;
+      }
+
+      .whatsapp{
+        right:14px;
+        bottom:14px;
+        font-size:14px;
+        padding:12px 15px;
       }
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <h2>SolarPlus</h2>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#calculator">Calculator</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+  <nav id="navMenu">
+    <a onclick="closeMenu()" href="#home">Home</a>
+    <a onclick="closeMenu()" href="#services">Services</a>
+    <a onclick="closeMenu()" href="#calculator">Calculator</a>
+    <a onclick="closeMenu()" href="#projects">Projects</a>
+    <a onclick="closeMenu()" href="#faq">FAQ</a>
+    <a onclick="closeMenu()" href="#contact">Contact</a>
   </nav>
 </header>
 
@@ -249,8 +328,8 @@
   <div class="hero-content">
     <h1>Save Electricity Bill With <span>Solar Energy</span></h1>
     <p>
-      Residential aur commercial solar panel installation ke liye trusted solar partner.
-      Government subsidy, EMI support aur complete installation service.
+      Ghar, shop aur business ke liye trusted solar panel installation.
+      Government subsidy, EMI support aur complete setup service.
     </p>
     <a href="#calculator" class="btn">Calculate Savings</a>
     <a href="#contact" class="btn btn-dark">Get Free Quote</a>
@@ -259,47 +338,46 @@
 
 <section id="services">
   <h2 class="title">Our Solar Services</h2>
-  <p class="subtitle">Ghar, shop, school, factory aur business ke liye complete solar solutions.</p>
+  <p class="subtitle">Residential, commercial aur hybrid solar ke liye complete solution.</p>
 
   <div class="cards">
     <div class="card">
       <h3>Residential Solar</h3>
-      <p>Ghar ke bijli bill ko kam karne ke liye rooftop solar installation.</p>
+      <p>Ghar ke rooftop par solar system laga kar bijli bill kam karein.</p>
     </div>
 
     <div class="card">
       <h3>Commercial Solar</h3>
-      <p>Shops, offices aur factories ke liye high-capacity solar system.</p>
+      <p>Shop, office, school aur factory ke liye solar installation.</p>
     </div>
 
     <div class="card">
       <h3>On-Grid Solar</h3>
-      <p>Bijli connection ke sath solar system, net metering aur subsidy support.</p>
+      <p>Bijli connection ke sath net metering aur subsidy support.</p>
     </div>
 
     <div class="card">
       <h3>Hybrid Solar</h3>
-      <p>Solar + battery backup system, light jane par bhi power support.</p>
+      <p>Solar + battery backup, light jane par bhi power support.</p>
     </div>
   </div>
 </section>
 
 <section id="calculator">
   <h2 class="title">Solar Savings Calculator</h2>
-  <p class="subtitle">Apna monthly electricity bill daalo aur approx solar size check karo.</p>
+  <p class="subtitle">Monthly electricity bill daalo aur approx solar requirement check karo.</p>
 
   <div class="calculator">
-    <h2>Calculate Your Solar Requirement</h2>
-    <input type="number" id="bill" placeholder="Monthly Electricity Bill ₹" />
+    <h2>Calculate Solar Requirement</h2>
+    <input type="number" id="bill" placeholder="Monthly Electricity Bill ₹">
     <button onclick="calculateSolar()">Calculate Now</button>
-
     <div id="result"></div>
   </div>
 </section>
 
 <section>
   <h2 class="title">PM Surya Ghar Subsidy</h2>
-  <p class="subtitle">Government subsidy ke sath rooftop solar lagwana aur bhi affordable ho jata hai.</p>
+  <p class="subtitle">Government subsidy ke sath rooftop solar aur affordable ho jata hai.</p>
 
   <div class="cards">
     <div class="card">
@@ -309,37 +387,59 @@
 
     <div class="card">
       <h3>Documentation</h3>
-      <p>Application, documents aur approval process me complete guidance.</p>
+      <p>Application, documents aur approval process me full guidance.</p>
     </div>
 
     <div class="card">
       <h3>Net Metering</h3>
-      <p>Extra solar power grid me ja sakti hai, jisse savings aur badh sakti hai.</p>
+      <p>Extra solar power grid me ja sakti hai, jisse savings badh sakti hai.</p>
     </div>
   </div>
 </section>
 
 <section class="projects" id="projects">
-  <h2 class="title">Our Recent Projects</h2>
-  <p class="subtitle">Kuch solar installation project samples.</p>
+  <h2 class="title">Recent Projects</h2>
+  <p class="subtitle">Solar installation ke kuch sample projects.</p>
 
   <div class="cards">
     <div class="card">
       <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80">
       <h3>Home Rooftop Solar</h3>
-      <p>3KW solar system installed for residential use.</p>
+      <p>3KW solar system residential use ke liye installed.</p>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=800&q=80">
       <h3>Commercial Solar</h3>
-      <p>Office building ke liye solar setup.</p>
+      <p>Office building ke liye high performance solar setup.</p>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80">
       <h3>Farm Solar System</h3>
       <p>Agriculture aur water pump ke liye solar solution.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2 class="title">Frequently Asked Questions</h2>
+  <p class="subtitle">Solar panel se related common questions.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Solar panel kitne saal chalta hai?</h3>
+      <p>Solar panel normally 25+ years tak smoothly kaam karta hai.</p>
+    </div>
+
+    <div class="card">
+      <h3>Battery zaruri hai kya?</h3>
+      <p>On-grid system me battery zaruri nahi hoti. Backup ke liye hybrid system chahiye.</p>
+    </div>
+
+    <div class="card">
+      <h3>Subsidy milegi kya?</h3>
+      <p>Residential rooftop solar par government subsidy mil sakti hai eligibility ke hisab se.</p>
     </div>
   </div>
 </section>
@@ -357,14 +457,23 @@
 
 <footer>
   <p>© 2026 SolarPlus. All Rights Reserved.</p>
-  <p>Call: +91 7311717164 | Email: solarplus@gmail.com</p>
+  <p>Call: +91 7311717164</p>
+  <p>Email: solarplus@gmail.com</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/917311717164?text=Hello%20I%20want%20solar%20website%20demo">
+<a class="whatsapp" href="https://wa.me/917311717164?text=Hello%20I%20want%20solar%20panel%20installation%20details">
   WhatsApp
 </a>
 
 <script>
+  function toggleMenu(){
+    document.getElementById("navMenu").classList.toggle("active");
+  }
+
+  function closeMenu(){
+    document.getElementById("navMenu").classList.remove("active");
+  }
+
   function calculateSolar(){
     let bill = document.getElementById("bill").value;
     let result = document.getElementById("result");
